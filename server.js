@@ -22,11 +22,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => { res.send(database.users) })
+app.get('/', (req, res) => { res.send("Server is Working!") })
 app.post('/signin', signin.handleSignin(db, bcrypt))
 app.post('/register', register.handleRegister(db, bcrypt))
 app.get('/profile/:id', profile.handleProfile(db))
 app.put('/image', image.handleImage(db) )
 app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)})
 
-app.listen(process.env.PORT || 3000, () => { console.log(`App is running on port {process.env.PORT}`); })
+app.listen(process.env.PORT || 3000, () => { console.log(`App is running on port ${process.env.PORT}`); })
